@@ -1,7 +1,24 @@
 {% extends "base.html" %} {% block title %}Scout{% endblock %} 
 
 {% block content %}
-<form method="POST">
+<!--Nav bar-->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="/home">4253 Raid Zero</a>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/scout">Scout</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/data">Data</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/input">Input</a>
+        </li>
+
+    </ul>
+</nav>
+
+<form autocomplete="off" method="POST">
     <br />
     <div class="justify-content-center align-items-center container text-center">
         <div class="form-group col-md-3 mx-auto">
@@ -12,13 +29,17 @@
             <label for="Round-number">Round Number</label>
             <input type="round" id="round" class="form-control text-center" placeholder="Eg. 3">
         </div>
+        <div class="form-group col-md-3 mx-auto">
+            <label for="Round-number">Alliance</label>
+            <select class="form-control text-center" id="alliance">
+                <option>Red Alliance</option>
+                <option>Blue Alliance</option>
+            </select>
+        </div>
     </div>
     <br />
-    <div class="text-center"> 
-        <button 
-            type="submit" 
-            class="btn btn-primary">Submit
-        </button>
+    <div class="text-center">
+        <button onclick = "location.href='/input'" type="button" class="btn btn-primary">Submit</button>
     </div>
 </form>
 {% endblock %}
