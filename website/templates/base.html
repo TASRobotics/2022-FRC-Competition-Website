@@ -1,12 +1,10 @@
-<!--This is for the general theme of the website-->
 <!DOCTYPE html>
 <html> 
     <head>
-        <!--Standard HTML-->
         <meta charset ="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         
-        <!--Bootstraps, makes websites look nicer-->
+        <!--Bootstrap-->
         <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -18,15 +16,34 @@
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             crossorigin="anonymous"
         />
-
-        <!--You usually put if, for loops... inside { %  % }-->
-        <!--By putting a block here, we are saying that we can have a child template that overwrites "home"-->
         <title>{% block title %}4253 FRC{% endblock %}</title>
     </head>
     <body>
+        <!--Main nav bar-->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <a class="navbar-brand" href="/home">4253 Raid Zero</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/scout">Scout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/data">Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auton">Auton</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/teleop">Teleop</a>
+                </li>
+            </ul>
+        </nav>
         {% block content %}
         {% endblock %}
-         <!--These scripts are for animations-->
+
+         <!--Animations-->
         <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -44,17 +61,18 @@
         ></script>
     </body>
     <style>
+        *{
+            box-sizing: border-box;
+        }
         body {
             background-color: #212121;
             color: white
         }
-
         h1{
             text-align: center;
             padding-top: 20px;
             z-index: 5;
         }
-
         h2{
             font-size: 40px;
             color: white;
@@ -62,26 +80,58 @@
             padding-top: 50px;
             z-index: 5;
         }
+        h4{
+            font-size: 30px;
+        }
 
         label{
             font-size: 20px;
         }
 
-        .column {
+        /* creates four equal columns */
+        .column{
             float: left;
-            width: 33.33%;
-            height: 300px; 
+            width: 25%;
+        }      
+        .box{
+            box-sizing: border-box;
+            width: 99%;
+            border: 5px solid white;
+            padding: 20px;
+            margin: 20px;
+            position: absolute;
+            bottom: 0;
+        }  
+        .big-word{
+            font-size: 25px;
         }
-
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
+        .taxi-word{
+            padding-left: 10px;
         }
+        .taxi-style{
+            padding-top: 60px;
+        }
+        .checkboxes label {
+            display: inline-block;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+        .checkboxes input {
+            vertical-align: middle;
+        }
+        .checkboxes label span {
+            vertical-align: middle;
+        }
+        .input-num{
 
-        .check-boxes{
-            padding-top: 20px;
-            padding-left: 70px;
+            vertical-align: middle;
         }
     </style>
+    <script>
+        $(".chb").change(function() {
+            $(".chb").prop('checked', false);
+            $(this).prop('checked', true);
+        });
+
+    </script>
 </html>

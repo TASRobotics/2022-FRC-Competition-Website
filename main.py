@@ -20,7 +20,7 @@ def input():
 def data():
     return render_template('data.html')
 
-@app.route('/autonomous')
+@app.route('/auton')
 def auton():
     return render_template('auton.html')
 

@@ -1,22 +1,6 @@
 {% extends "base.html" %} {% block title %}Scout{% endblock %} 
 
 {% block content %}
-<!--Nav bar-->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="/home">4253 Raid Zero</a>
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="/scout">Scout</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/data">Data</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/input">Input</a>
-        </li>
-
-    </ul>
-</nav>
 
 <form autocomplete="off" method="POST">
     <br />
@@ -38,8 +22,25 @@
         </div>
     </div>
     <br />
-    <div class="text-center">
-        <button onclick = "location.href='/input'" type="button" class="btn btn-primary">Submit</button>
-    </div>
 </form>
+<!--
+<form autocomplete="off" class="needs-validation" novalidate>
+    <div class="form-row text-center">
+      <div class="col-md-2 mx-auto">
+        <label for="validationCustom01">Team Number</label>
+        <input type="text" class="text-center form-control" id="validationCustom01" placeholder="Eg. 4253" required>
+      </div>
+      <div class="col-md-2 mx-auto">
+        <label for="validationCustom02">Match Number</label>
+        <input type="text" class="text-center form-control" id="validationCustom02" placeholder="Eg. 3" required>
+      </div>
+      <div class="col-md-2 mx-auto">
+        <label for="Round-number">Alliance</label>
+        <select class="form-control text-center" id="alliance">
+            <option>Red Alliance</option>
+            <option>Blue Alliance</option>
+        </select>
+    </div>
+    </div>
+  </form>-->
 {% endblock %}

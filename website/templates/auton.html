@@ -1,19 +1,53 @@
-{% extends "base.html" %} {% block title %}Autonomous{% endblock %} 
+{% extends "base.html" %}
 
 {% block content %}
-<!--Nav bar-->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="/home">4253 Raid Zero</a>
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="/auton">Autonomous</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/teleop">Teleop</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/results">Results</a>
-        </li>
-    </ul>
-</nav>
+<br />
+<h3 class="text-center">Autonomous</h3>
+<br />
+<div class="row">
+    <!--Taxi column-->
+    <div class="column">
+        <h4 class="text-center"><strong>Taxi</strong></h4> 
+
+        <!--Check boxes-->
+        <div class="checkboxes text-center taxi-style">
+            <label class="big-word"><input type="checkbox" class="chb"><span class="taxi-word">Yes</span></label>
+        </div>
+        <div class="checkboxes text-center taxi-style">
+            <label class="big-word"><input type="checkbox" class="chb"><span class="taxi-word">No</span></label>
+        </div>
+    </div>
+
+    <!--Lower hub column-->
+    <div class="column">
+        <h4 class="text-center">Lower Hub</h4>
+
+        <!--Score recorder-->
+        <div class="col-lg-5 col-lg-offset-5">
+            <div class="input-group">
+                <input class="text-center input-num" type="number" value="0" name="points" step="1">
+            </div>
+        </div>
+    </div>
+
+    <!--Upper hub column-->
+    <div class="column">
+        <h4 class="text-center">Upper Hub</h4>
+        <input class="text-center input-num" type="number" value="0" name="points" step="1">
+    </div>
+
+    <!--Missed column-->
+    <div class="column">
+        <h4 class="text-center">Missed</h4>
+        <input class="text-center input-num" type="number" value="0" name="points" step="1">
+    </div>
+
+    <!-- Draw a box at the bottom-->
+    <div class="box">
+        <div class="checkboxes text-center">
+            <label class="big-word"><input type="checkbox"> <span>Unreliable</span></label>
+            <label class="big-word"><input type="checkbox"> <span>Impossible</span></label>
+        </div>
+    </div>
+</div>
 {% endblock %}
