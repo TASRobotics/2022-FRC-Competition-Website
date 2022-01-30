@@ -32,5 +32,9 @@ def teleop():
 def results():
     return render_template('results.html')
 
+@app.route('/auton1')
+def test():
+    return render_template('auton1.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

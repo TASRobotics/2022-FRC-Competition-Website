@@ -1,53 +1,70 @@
 {% extends "base.html" %}
 
 {% block content %}
-<br />
-<h3 class="text-center">Autonomous</h3>
-<br />
-<div class="row">
-    <!--Taxi column-->
-    <div class="column">
-        <h4 class="text-center"><strong>Taxi</strong></h4> 
+<h1>Autonomous</h1>
+<div class="container-md">
+    <!--
+    <div class="row justify-content-center my-5 big-word">
+        <div class="col col-md-1 col-xl-3 text-center border">Taxi:</div>
 
-        <!--Check boxes-->
-        <div class="checkboxes text-center taxi-style">
-            <label class="big-word"><input type="checkbox" class="chb"><span class="taxi-word">Yes</span></label>
+        <div class="col col-md-1 col-xl-3 form-check taxi-check border">
+            <input class="form-check-input chb" type="checkbox" value="yes" id="yes">
+            <label class="form-check-label" for="yes">
+                Yes
+            </label>
         </div>
-        <div class="checkboxes text-center taxi-style">
-            <label class="big-word"><input type="checkbox" class="chb"><span class="taxi-word">No</span></label>
+        <div class="col col-md-1 col-xl-3 form-check border">
+            <input class="form-check-input chb" type="checkbox" value="no" id="no">
+            <label class="form-check-label" for="no">
+                No
+            </label>
         </div>
-    </div>
+    </div>-->
+    
+    <!--Taxi-->
+    <div>
+        <div class="row my-3 justify-content-center big-word">
+            <div class="col col-md-1 col-xl-6 text-center border"><strong>Taxi:</strong></div>
+        </div>
 
-    <!--Lower hub column-->
-    <div class="column">
-        <h4 class="text-center">Lower Hub</h4>
-
-        <!--Score recorder-->
-        <div class="col-lg-5 col-lg-offset-5">
-            <div class="input-group">
-                <input class="text-center input-num" type="number" value="0" name="points" step="1">
+        <!--Checkboxes-->
+        <div class="row justify-content-center big-word"> 
+            <div class="col col-md-1 col-xl-2 form-check form-check-inline border">
+                <input class="form-check-input" type="checkbox" id="yes" value="yes">
+                <label class="form-check-label" for="yes">Yes</label>
+            </div>
+            <div class="col col-md-1 col-xl-2 form-check form-check-inline border">
+                <input class="form-check-input" type="checkbox" id="no" value="no">
+                <label class="form-check-label" for="no">No</label>
             </div>
         </div>
     </div>
 
-    <!--Upper hub column-->
-    <div class="column">
-        <h4 class="text-center">Upper Hub</h4>
-        <input class="text-center input-num" type="number" value="0" name="points" step="1">
+    <!--Upper-->
+    <div>
+        <div class="row my-4 big-word justify-content-center">
+            <div class="col col-md-1 col-xl-6 text-center border"><strong>Upper</strong></div>
+        </div>
+        
+        <!--In-->
+        <div class="row my-4 big-word justify-content-start">
+            <div class="col col-md-1 col-xl-6 text-center border">In</div>
+        </div>
+
+        <!--In-->
+        <div class="row my-4 big-word justify-content-start">
+            <div class="col col-md-1 col-xl-6 text-center border">In</div>
+        </div>
+
     </div>
 
-    <!--Missed column-->
-    <div class="column">
-        <h4 class="text-center">Missed</h4>
-        <input class="text-center input-num" type="number" value="0" name="points" step="1">
-    </div>
-
-    <!-- Draw a box at the bottom-->
-    <div class="box">
-        <div class="checkboxes text-center">
-            <label class="big-word"><input type="checkbox"> <span>Unreliable</span></label>
-            <label class="big-word"><input type="checkbox"> <span>Impossible</span></label>
+    <!--Lower-->
+    <div>
+        <div class="row my-5 big-word">
+            <div class="col col-md-1 col-md-6 text-center border"><strong>Lower</strong></div>
         </div>
     </div>
+
 </div>
+
 {% endblock %}
