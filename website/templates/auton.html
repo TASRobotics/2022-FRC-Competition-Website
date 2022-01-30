@@ -2,69 +2,86 @@
 
 {% block content %}
 <h1>Autonomous</h1>
-<div class="container-md">
-    <!--
-    <div class="row justify-content-center my-5 big-word">
-        <div class="col col-md-1 col-xl-3 text-center border">Taxi:</div>
-
-        <div class="col col-md-1 col-xl-3 form-check taxi-check border">
-            <input class="form-check-input chb" type="checkbox" value="yes" id="yes">
-            <label class="form-check-label" for="yes">
-                Yes
-            </label>
-        </div>
-        <div class="col col-md-1 col-xl-3 form-check border">
-            <input class="form-check-input chb" type="checkbox" value="no" id="no">
-            <label class="form-check-label" for="no">
-                No
-            </label>
-        </div>
-    </div>-->
-    
+<div class="container-md">    
     <!--Taxi-->
-    <div>
-        <div class="row my-3 justify-content-center big-word">
-            <div class="col col-md-1 col-xl-6 text-center border"><strong>Taxi:</strong></div>
+    <div class="border my-3 mx-auto justify-content-center col-xl-6">
+        <div class="row justify-content-center big-word">
+            <div class="col col-sm-1 col-xl-6 text-center"><strong>Taxi</strong></div>
         </div>
 
         <!--Checkboxes-->
         <div class="row justify-content-center big-word"> 
-            <div class="col col-md-1 col-xl-2 form-check form-check-inline border">
-                <input class="form-check-input" type="checkbox" id="yes" value="yes">
+            <div class="col d-flex justify-content-center col-sm-1 col-xl-3 form-check form-check-inline left-padding">
+                <input class="form-check-input chb" type="checkbox" id="yes" value="yes">
                 <label class="form-check-label" for="yes">Yes</label>
             </div>
-            <div class="col col-md-1 col-xl-2 form-check form-check-inline border">
-                <input class="form-check-input" type="checkbox" id="no" value="no">
+            <div class="col d-flex justify-content-center col-sm-1 col-xl-3 form-check form-check-inline left-padding">
+                <input class="form-check-input chb" type="checkbox" id="no" value="no">
                 <label class="form-check-label" for="no">No</label>
             </div>
         </div>
     </div>
 
     <!--Upper-->
-    <div>
-        <div class="row my-4 big-word justify-content-center">
-            <div class="col col-md-1 col-xl-6 text-center border"><strong>Upper</strong></div>
+    <div class="border col-xl-6 mx-auto my-3">
+        <div class="row big-word justify-content-center">
+            <div class="col col-md-1 col-xl-6 text-center"><strong>Upper Hub</strong></div>
         </div>
         
         <!--In-->
-        <div class="row my-4 big-word justify-content-start">
-            <div class="col col-md-1 col-xl-6 text-center border">In</div>
+        <div class="row my-3 big-word justify-content-center">
+            <div class="col d-flex col-md-1 col-xl-4 justify-content-end ">In:</div>
+            <div class="col d-flex col-md-1 col-xl-4 justify-content-end">    
+                <input class="text-center input-num" name="upper_in" type="number" value="0" name="upper_points" step="1">
+            </div>
         </div>
-
-        <!--In-->
-        <div class="row my-4 big-word justify-content-start">
-            <div class="col col-md-1 col-xl-6 text-center border">In</div>
+        <!--Didn't-->
+        <div class="row my-3 big-word justify-content-center">
+            <div class="col d-flex col-md-1 col-xl-4 justify-content-end">Didn't:</div>
+            <div class="col d-flex col-md-1 col-xl-4 justify-content-end">    
+                <input class="text-center input-num" name="upper_not" type="number" value="0" name="lower_points" step="1">
+            </div>
         </div>
-
+        <!--Unreliable-->
+        <div class="row justify-content-center big-word"> 
+            <div class="col d-flex justify-content-center col-sm-1 col-xl-3 form-check form-check-inline unreliable-padding">
+                <input class="form-check-input" type="checkbox" id="unreliable_upper" value="unreliable_upper">
+                <label class="form-check-label" for="unreliable_upper">Unreliable</label>
+            </div>
+        </div>
     </div>
 
+    
     <!--Lower-->
-    <div>
-        <div class="row my-5 big-word">
-            <div class="col col-md-1 col-md-6 text-center border"><strong>Lower</strong></div>
+    <div class="border col-xl-6 mx-auto my-3">
+        <div class="row big-word justify-content-center">
+            <div class="col col-md-1 col-xl-6 text-center"><strong>Lower Hub</strong></div>
+        </div>
+        
+        <!--In-->
+        <div class="row my-3 big-word justify-content-center">
+            <div class="col d-flex col-md-1 col-xl-4 justify-content-end ">In:</div>
+            <div class="col d-flex col-md-1 col-xl-4 justify-content-end">    
+                <input class="text-center input-num" name="lower_in" type="number" value="0" name="lower_points" step="1">
+            </div>
+        </div>
+        <!--Didn't-->
+        <div class="row my-3 big-word justify-content-center">
+            <div class="col d-flex col-md-1 col-xl-4 justify-content-end">Didn't:</div>
+            <div class="col d-flex col-md-1 col-xl-4 justify-content-end">    
+                <input class="text-center input-num" name="lower_not" type="number" value="0" name="lower-not" step="1">
+            </div>
+        </div>
+        <!--Unreliable-->
+        <div class="row justify-content-center big-word"> 
+            <div class="col d-flex justify-content-center col-sm-1 col-xl-3 form-check form-check-inline unreliable-padding">
+                <input class="form-check-input" type="checkbox" id="unreliable_lower" value="unreliable_lower">
+                <label class="form-check-label" for="unreliable_lower">Unreliable</label>
+            </div>
         </div>
     </div>
-
+    <br />
+    <br />
 </div>
 
 {% endblock %}
