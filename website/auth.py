@@ -25,7 +25,8 @@ def scout():
 @auth.route('/data')
 def data():
     try:
-        data = Scout.query.filter_by(team=4444).all()
+        #data = Scout.query.filter_by(team=4444).all()
+        data = Scout.query.all()
         print(data)
         return render_template('data.html', data=data)
     except Exception as e:

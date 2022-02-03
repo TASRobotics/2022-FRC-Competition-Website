@@ -10,20 +10,23 @@
 					<th>Team</th>
 					<th>Round</th>
 					<th>Alliance</th>
-					<th>Taxi</th>
-					<th>A_Upper_In</th>
-					<th>A_Upper_Missed</th>
-					<th>A_Upper_Unreliable</th>
-					<th>A_Lower_In</th>
-					<th>A_Lower_Missed</th>
-					<th>A_Lower_Unreliable</th>
 
-					<th>T_Upper_In</th>
-					<th>T_Upper_Missed</th>
-					<th>T_Upper_Unreliable</th>
-					<th>T_Lower_In</th>
-					<th>T_Lower_Missed</th>
-					<th>T_Lower_Unreliable</th>
+					<th>Auton</th>
+					<th>Taxi</th>
+					<th>Upper_In</th>
+					<th>Upper_Missed</th>
+					<th>Upper_Unreliable</th>
+					<th>Lower_In</th>
+					<th>Lower_Missed</th>
+					<th>Lower_Unreliable</th>
+
+					<th>Teleop</th>
+					<th>Upper_In</th>
+					<th>Upper_Missed</th>
+					<th>Upper_Unreliable</th>
+					<th>Lower_In</th>
+					<th>Lower_Missed</th>
+					<th>Lower_Unreliable</th>
 
 					<th>Hang</th>
 					<th>Results</th>
@@ -38,6 +41,8 @@
 					<td>{{ datum.round }}</td>
 					<td>{{ datum.alliance }}</td>
 
+					<td></td>
+
 					<td>{{ datum.taxi }}</td>
 					<td>{{ datum.auton_upper_in }}</td>
 					<td>{{ datum.auton_upper_missed }}</td>
@@ -46,6 +51,7 @@
 					<td>{{ datum.auton_lower_missed }}</td>
 					<td>{{ datum.auton_lower_unreliable }}</td>
 
+					<td></td>
 					<td>{{ datum.tele_upper_in }}</td>
 					<td>{{ datum.tele_upper_missed }}</td>
 					<td>{{ datum.tele_upper_unreliable }}</td>
