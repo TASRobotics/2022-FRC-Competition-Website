@@ -6,27 +6,25 @@ from sqlalchemy.sql import func
 
 class Scout(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    team = db.Column(db.Integer)
-    round = db.Column(db.Integer)
+    team = db.Column(db.String(20))
+    round = db.Column(db.String(20))
     alliance = db.Column(db.String(20))
 
-    auton_taxi = db.Column(db.String(20))
-    auton_upper_in = db.Column(db.Integer)
-    auton_upper_missed = db.Column(db.Integer)
+    taxi = db.Column(db.String(20))
+    auton_upper_in = db.Column(db.String(20))
+    auton_upper_missed = db.Column(db.String(20))
     auton_upper_unreliable = db.Column(db.String(20))
 
-    auton_lower_in = db.Column(db.Integer)
-    auton_lower_missed = db.Column(db.Integer)
+    auton_lower_in = db.Column(db.String(20))
+    auton_lower_missed = db.Column(db.String(20))
     auton_lower_unreliable = db.Column(db.String(20))
 
-    tele_taxi = db.Column(db.String(20))
-
-    tele_upper_in = db.Column(db.Integer)
-    tele_upper_missed = db.Column(db.Integer)
+    tele_upper_in = db.Column(db.String(20))
+    tele_upper_missed = db.Column(db.String(20))
     tele_upper_unreliable = db.Column(db.String(20))
 
-    tele_lower_in = db.Column(db.Integer)
-    tele_lower_missed = db.Column(db.Integer)
+    tele_lower_in = db.Column(db.String(20))
+    tele_lower_missed = db.Column(db.String(20))
     tele_lower_unreliable = db.Column(db.String(20))
 
     hang = db.Column(db.String(20))

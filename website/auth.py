@@ -22,13 +22,17 @@ def scout():
         
     return render_template('scout.html')
 
-@auth.route('/input')
-def input():
-    return render_template('input.html')
-
 @auth.route('/data')
 def data():
-    return render_template('data.html')
+    try:
+        data = Scout.query.filter_by(team=4444).all()
+        print(data)
+        return render_template('data.html', data=data)
+    except Exception as e:
+        # e holds description of the error
+        error_text = "<p>The error:<br>" + str(e) + "</p>"
+        hed = '<h1>Something is broken.</h1>'
+        return hed + error_text
 
 @auth.route('/auton', methods=['GET', 'POST'])
 def auton():
@@ -43,6 +47,7 @@ def auton():
         auton_lower_missed = request.form.get('auton_lower_missed')
         auton_lower_unreliable = request.form.get('auton_lower_unreliable')
     return render_template('auton.html')
+
 
 @auth.route('/teleop', methods=['GET', 'POST'])
 def teleop():
@@ -64,19 +69,17 @@ def teleop():
 
     return render_template('teleop.html')
 
-@auth.route('/results')
-def results():
-    return render_template('results.html')
-
 @auth.route('/attempt', methods=['GET', 'POST'])
 def attempt():
+    data = request.form
+    print(data)
     if request.method == 'POST':
         team = request.form.get('team')
         round = request.form.get('round')
         alliance = request.form.get('alliance')
 
         # Auton
-        taxi = request.form.get('auton_taxi')
+        taxi = request.form.get('taxi')
 
         auton_upper_in = request.form.get('auton_upper_in')
         auton_upper_missed = request.form.get('auton_upper_missed')
@@ -86,6 +89,7 @@ def attempt():
         auton_lower_missed = request.form.get('auton_lower_missed')
         auton_lower_unreliable = request.form.get('auton_lower_unreliable')
 
+        # teleop
         tele_upper_in = request.form.get('tele_upper_in')
         tele_upper_missed = request.form.get('tele_upper_missed')
         tele_upper_unreliable = request.form.get('tele_unreliable_upper')
@@ -99,7 +103,7 @@ def attempt():
         cargo_bonus = request.form.get('cargo_bonus')
         hangar_bonus = request.form.get('hangar_bonus')
 
-        new_scout = Scout(team=team, round=round, alliance=alliance, auton_taxi=taxi, 
+        new_scout = Scout(team=team, round=round, alliance=alliance, taxi=taxi, 
                           auton_upper_in=auton_upper_in, auton_upper_missed=auton_upper_missed, 
                           auton_upper_unreliable=auton_upper_unreliable, auton_lower_in=auton_lower_in,
                           auton_lower_missed=auton_lower_missed, auton_lower_unreliable=auton_lower_unreliable, 
