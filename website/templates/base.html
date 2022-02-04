@@ -61,15 +61,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/data">Data</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/auton">Auton</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/teleop">Teleop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/attempt">Attempt</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -133,7 +124,6 @@
         td{
             color: white;
         }
-
         label{
             font-size: 20px;
         } 
@@ -153,9 +143,6 @@
         .left-padding{
             padding-left: 80px;
         }
-        .unreliable-padding{
-            padding-left: 60px;
-        }
         input[type=number] {
             height: 40px;
             width: 200px;
@@ -165,22 +152,4 @@
             height: 40px;
         }
     </style>
-    <script>
-        // checkboxes behave like radio buttons
-        $(".chb").change(function() {
-            $(".chb").prop('checked', false);
-            $(this).prop('checked', true);
-        });
-
-        var checkbox = document.getElementById("radio");
-        function validator() {
-            if (checkbox.checked == false) {
-                document.getElementById('prependedcheckbox').disabled = true;
-            } else {
-                document.getElementById('prependedcheckbox').disabled = false;
-            }
-        }
-        checkbox.addEventListener('click', validator);
-
-    </script>
 </html>
