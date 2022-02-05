@@ -11,10 +11,12 @@ def home():
     return render_template('home.html')
 
 # Data
-@auth.route('/data')
+@auth.route('/data', methods=['GET','POST'])
 def data():
     try:
         data = Scout.query.all()
+        if request.method == 'POST':
+            print()
         return render_template('data.html', data=data)
     except Exception as e:
         # e holds description of the error
@@ -67,13 +69,23 @@ def attempt():
         
     return render_template('scout.html')
 
+# Delete
+@auth.route('/delete/<int:id>')
+@auth.route('/delete', defaults={'id': None})
+def delete(id):
+    team_delete = Scout.query.get_or_404(id)
+    db.session.delete(team_delete)
+    db.session.commit()
+    data = Scout.query.all()
+    return render_template('data.html',data=data)
+
 # Download the database
 @auth.route('/download')
 def download():
     data = Scout.query.all()
 
     # Store it as csv 
-    with open(r'C:\Users\22matthewk\Desktop\data.csv', 'w') as s_key:
+    with open(r'website/static/data.csv', 'w') as s_key:
         csv_out = csv.writer(s_key)
 
         # Horizontal labels
@@ -87,4 +99,4 @@ def download():
                                 Scout.tele_lower_missed, Scout.tele_lower_unreliable, Scout.hang, Scout.cargo_bonus, Scout.hangar_bonus)
         for i in data:
             csv_out.writerow(i)
-    return render_template('data.html',data=data)
+        return render_template('download.html')

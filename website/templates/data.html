@@ -32,6 +32,7 @@
 					<th>Results</th>
 					<th>C_Bonus</th>
 					<th>H_Bonus</th>
+					<th>Delete</th>
 
 				</tr>
 
@@ -63,6 +64,12 @@
 					<td class="border">{{ datum.win }}</td>
 					<td class="border">{{ datum.cargo_bonus }}</td>
 					<td class="border">{{ datum.hangar_bonus }}</td>
+
+					<td>
+						<button type="delete" class="btn btn-light">
+							<a href="{{ url_for('auth.delete', id=datum.id) }}">Delete</a>
+						</button>
+					</td>
 				</tr>
 				{% endfor %}
 			</table>
