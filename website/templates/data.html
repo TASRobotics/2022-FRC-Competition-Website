@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container-fluid">
   	<div class="row pb-5">
 		<div class="col-md-12 col-lg-12">
 			<table class="my-5 table">
@@ -37,33 +37,32 @@
 
 				{% for datum in data %}
 				<tr class="border text-center">
-					<td>{{ datum.team }}</td>
-					<td>{{ datum.round }}</td>
-					<td>{{ datum.alliance }}</td>
+					<td class="border">{{ datum.team }}</td>
+					<td class="border">{{ datum.round }}</td>
+					<td class="border">{{ datum.alliance }}</td>
 
-					<td></td>
+					<td class="border">--></td>
 
-					<td>{{ datum.taxi }}</td>
-					<td>{{ datum.auton_upper_in }}</td>
-					<td>{{ datum.auton_upper_missed }}</td>
-					<td>{{ datum.auton_upper_unreliable }}</td>
-					<td>{{ datum.auton_lower_in }}</td>
-					<td>{{ datum.auton_lower_missed }}</td>
-					<td>{{ datum.auton_lower_unreliable }}</td>
+					<td class="border">{{ datum.taxi }}</td>
+					<td class="border">{{ datum.auton_upper_in }}</td>
+					<td class="border">{{ datum.auton_upper_missed }}</td>
+					<td class="border">{{ datum.auton_upper_unreliable }}</td>
+					<td class="border">{{ datum.auton_lower_in }}</td>
+					<td class="border">{{ datum.auton_lower_missed }}</td>
+					<td class="border">{{ datum.auton_lower_unreliable }}</td>
 
-					<td></td>
-					<td>{{ datum.tele_upper_in }}</td>
-					<td>{{ datum.tele_upper_missed }}</td>
-					<td>{{ datum.tele_upper_unreliable }}</td>
-					<td>{{ datum.tele_lower_in }}</td>
-					<td>{{ datum.tele_lower_missed }}</td>
-					<td>{{ datum.tele_lower_unreliable }}</td>
+					<td class="border"></td>
+					<td class="border">{{ datum.tele_upper_in }}</td>
+					<td class="border">{{ datum.tele_upper_missed }}</td>
+					<td class="border">{{ datum.tele_upper_unreliable }}</td>
+					<td class="border">{{ datum.tele_lower_in }}</td>
+					<td class="border">{{ datum.tele_lower_missed }}</td>
+					<td class="border">{{ datum.tele_lower_unreliable }}</td>
 
-					<td>{{ datum.hang }}</td>
-					<td>{{ datum.win }}</td>
-					<td>{{ datum.cargo_bonus }}</td>
-					<td>{{ datum.hangar_bonus }}</td>
-
+					<td class="border">{{ datum.hang }}</td>
+					<td class="border">{{ datum.win }}</td>
+					<td class="border">{{ datum.cargo_bonus }}</td>
+					<td class="border">{{ datum.hangar_bonus }}</td>
 				</tr>
 				{% endfor %}
 			</table>
