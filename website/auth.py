@@ -73,7 +73,7 @@ def download():
     data = Scout.query.all()
 
     # Store it as csv 
-    with open(r'C:\Users\22matthewk\Desktop\data.csv', 'w') as s_key:
+    with open(r'data.csv', 'w') as s_key:
         csv_out = csv.writer(s_key)
 
         # Horizontal labels
