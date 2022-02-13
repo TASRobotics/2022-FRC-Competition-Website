@@ -60,25 +60,6 @@
                     <input class="text-center input-num" type="number" id="auton_upper_in" name="auton_upper_in" value="0" step="1">
                 </div>
             </div>
-            <!--
-            <div class="row big-word justify-content-center">
-                <div class="col text-center">In:</div>
-            </div>
-
-            <div class="justify-content-center input-group plus-minus-input">
-                <div class="input-group-button">
-                    <button type="button" class="button hollow circle" data-quantity="minus" data-field="quantity">
-                        <i class="fa fa-minus" aria-hidden="true"></i>
-                    </button>
-                </div>
-
-                <input class="big-word text-center input-group-field" type="number" name="quantity" value="0">
-                <div class="input-group-button">
-                    <button type="button" class="button hollow circle" data-quantity="plus" data-field="quantity">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </div>-->
 
             <!--Missed-->
             <div class="row my-3 big-word">
@@ -171,10 +152,30 @@
             </div>
             
             <!--In-->
-            <div class="row my-3 big-word">
+            <!--<div class="row my-3 big-word">
                 <div class="col d-flex col-xl-4 justify-content-end">In:</div>
                 <div class="col d-flex col-xl-4 justify-content-center">    
                     <input class="text-center input-num" type="number" id="tele_lower_in" name="tele_lower_in" value="0" step="1">
+                </div>
+            </div>-->
+            
+            <div class="row my-3 big-word">
+                <div class="col d-flex justify-content-center">In:</div>
+                <div class="col d-flex col-xl-4 justify-content-center input-group"> 
+                    <!--Minus-->   
+                    <div class="input-group-prepend">
+                        <button class="btn btn-secondary" type="button" data-quantity="minus" data-field="tele_upper_in">
+                            <i class="fa fa-minus" aria-hidden="true"></i></span>
+                        </button>  
+                    </div>
+                    <input class="text-center input-num" type="number" id="tele_upper_in" name="tele_upper_in" value="0" step="1" readonly>
+
+                    <!--Plus-->
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button" data-quantity="plus" data-field="tele_upper_in">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>  
+                    </div>
                 </div>
             </div>
 

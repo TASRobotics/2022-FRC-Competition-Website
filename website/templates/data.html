@@ -3,36 +3,50 @@
 {% block content %}
 
 <div class="container-fluid">
+	<br />
+	<!--Search bar-->
+	<div class="justify-content-center text-center">
+		<input id="ticketNum" type="number" name="searched_team" value="0">
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</div>
+
+	<!--Table-->
   	<div class="row pb-5">
 		<div class="col-md-12 col-lg-12">
-			<table class="my-5 table">
+			<table class="my-4 table">
 				<tr class="border text-center">
-					<th>Team</th>
-					<th>Round</th>
-					<th>Alliance</th>
+					<th class="border">Team</th>
+					<th class="border">Round</th>
+					<th class="border">Alliance</th>
+
+          			<th>&emsp;&emsp;</th>
 
 					<th>Auton</th>
-					<th>Taxi</th>
-					<th>Upper_In</th>
-					<th>Upper_Missed</th>
-					<th>Upper_Unreliable</th>
-					<th>Lower_In</th>
-					<th>Lower_Missed</th>
-					<th>Lower_Unreliable</th>
+					<th class="border">Taxi</th>
+					<th class="border">Upper_In</th>
+					<th class="border">Upper_Missed</th>
+					<th class="border">Upper_Unreliable</th>
+					<th class="border">Lower_In</th>
+					<th class="border">Lower_Missed</th>
+					<th class="border">Lower_Unreliable</th>
+
+          			<th>&emsp;&emsp;</th>
 
 					<th>Teleop</th>
-					<th>Upper_In</th>
-					<th>Upper_Missed</th>
-					<th>Upper_Unreliable</th>
-					<th>Lower_In</th>
-					<th>Lower_Missed</th>
-					<th>Lower_Unreliable</th>
+					<th class="border">Upper_In</th>
+					<th class="border">Upper_Missed</th>
+					<th class="border">Upper_Unreliable</th>
+					<th class="border">Lower_In</th>
+					<th class="border">Lower_Missed</th>
+					<th class="border">Lower_Unreliable</th>
+					<th class="border">Hang</th>
 
-					<th>Hang</th>
-					<th>Results</th>
-					<th>C_Bonus</th>
-					<th>H_Bonus</th>
-					<th>Delete</th>
+          			<th>&emsp;&emsp;</th>
+
+					<th >Results</th>
+					<th class="border">C_Bonus</th>
+					<th class="border">H_Bonus</th>
+          			<th class="border">Delete</th>
 
 				</tr>
 
@@ -42,8 +56,8 @@
 					<td class="border">{{ datum.round }}</td>
 					<td class="border">{{ datum.alliance }}</td>
 
-					<td class="border">--></td>
-
+         			<td></td>
+					<td>--></td>
 					<td class="border">{{ datum.taxi }}</td>
 					<td class="border">{{ datum.auton_upper_in }}</td>
 					<td class="border">{{ datum.auton_upper_missed }}</td>
@@ -52,24 +66,27 @@
 					<td class="border">{{ datum.auton_lower_missed }}</td>
 					<td class="border">{{ datum.auton_lower_unreliable }}</td>
 
-					<td class="border"></td>
+          			<td></td>
+					<td>--></td>
 					<td class="border">{{ datum.tele_upper_in }}</td>
 					<td class="border">{{ datum.tele_upper_missed }}</td>
 					<td class="border">{{ datum.tele_upper_unreliable }}</td>
 					<td class="border">{{ datum.tele_lower_in }}</td>
 					<td class="border">{{ datum.tele_lower_missed }}</td>
 					<td class="border">{{ datum.tele_lower_unreliable }}</td>
-
 					<td class="border">{{ datum.hang }}</td>
-					<td class="border">{{ datum.win }}</td>
+
+        			<td></td>
+					<td>{{ datum.win }}</td>
 					<td class="border">{{ datum.cargo_bonus }}</td>
 					<td class="border">{{ datum.hangar_bonus }}</td>
 
-					<td>
+         			<td>
 						<button type="delete" class="btn btn-light">
 							<a href="{{ url_for('auth.delete', id=datum.id) }}">Delete</a>
 						</button>
 					</td>
+
 				</tr>
 				{% endfor %}
 			</table>

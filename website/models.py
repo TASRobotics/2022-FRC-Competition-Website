@@ -1,5 +1,3 @@
-# want to have a database of users and another database for notes
-# same as from website import db
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func

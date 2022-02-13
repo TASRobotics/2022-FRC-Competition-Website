@@ -13,10 +13,11 @@ def home():
 # Data
 @auth.route('/data', methods=['GET','POST'])
 def data():
+    if request.method == 'POST':
+        print("jhello")
     try:
+        # data = Scout.query.filter_by(team=team).first()
         data = Scout.query.all()
-        if request.method == 'POST':
-            print()
         return render_template('data.html', data=data)
     except Exception as e:
         # e holds description of the error
