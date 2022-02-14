@@ -12,18 +12,16 @@ def home():
 
 # Data
 @auth.route('/data', methods=['GET','POST'])
-def data():
+def data():    
+    # Show all the scouting data
+    data = Scout.query.order_by(Scout.team).all()
+
+    # Search teams
     if request.method == 'POST':
-        print("jhello")
-    try:
-        # data = Scout.query.filter_by(team=team).first()
-        data = Scout.query.all()
-        return render_template('data.html', data=data)
-    except Exception as e:
-        # e holds description of the error
-        error_text = "<p>The error:<br>" + str(e) + "</p>"
-        hed = '<h1>Something is broken.</h1>'
-        return hed + error_text
+        searched_team = request.form.get('searched_team')
+        data = Scout.query.filter_by(team=searched_team).all()
+
+    return render_template('data.html', data=data)
 
 # Scouting
 @auth.route('/scout', methods=['GET', 'POST'])
