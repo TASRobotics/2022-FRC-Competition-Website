@@ -11,16 +11,17 @@ def home():
     return render_template('home.html')
 
 # Data
-@auth.route('/data')
-def data():
-    try:
-        data = Scout.query.all()
-        return render_template('data.html', data=data)
-    except Exception as e:
-        # e holds description of the error
-        error_text = "<p>The error:<br>" + str(e) + "</p>"
-        hed = '<h1>Something is broken.</h1>'
-        return hed + error_text
+@auth.route('/data', methods=['GET','POST'])
+def data():    
+    # Show all the scouting data
+    data = Scout.query.order_by(Scout.team).all()
+
+    # Search teams
+    if request.method == 'POST':
+        searched_team = request.form.get('searched_team')
+        data = Scout.query.filter_by(team=searched_team).all()
+
+    return render_template('data.html', data=data)
 
 # Scouting
 @auth.route('/scout', methods=['GET', 'POST'])
@@ -67,13 +68,23 @@ def attempt():
         
     return render_template('scout.html')
 
+# Delete
+@auth.route('/delete/<int:id>')
+@auth.route('/delete', defaults={'id': None})
+def delete(id):
+    team_delete = Scout.query.get_or_404(id)
+    db.session.delete(team_delete)
+    db.session.commit()
+    data = Scout.query.all()
+    return render_template('data.html',data=data)
+
 # Download the database
 @auth.route('/download')
 def download():
     data = Scout.query.all()
 
     # Store it as csv 
-    with open(r'data.csv', 'w') as s_key:
+    with open(r'website/static/data.csv', 'w') as s_key:
         csv_out = csv.writer(s_key)
 
         # Horizontal labels
@@ -87,4 +98,4 @@ def download():
                                 Scout.tele_lower_missed, Scout.tele_lower_unreliable, Scout.hang, Scout.cargo_bonus, Scout.hangar_bonus)
         for i in data:
             csv_out.writerow(i)
-    return render_template('data.html',data=data)
+        return render_template('download.html')
