@@ -2,8 +2,16 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for,
 from .models import Scout
 from . import db
 import csv
+import tbapy
+import json
 
+tba = tbapy.TBA('h39XHSEqXkc59WvXY0lteYagmwOzWD0wmLV2CxZulOMcB89YIHFUIczJxvGTtM6X')
 auth = Blueprint('auth', __name__)
+
+all_teams_simple = tba.event_teams("2022tant", "simple")
+all_teams = []
+for i in range (len(all_teams_simple)):
+    all_teams.append(all_teams_simple[i]['team_number'])
 
 @auth.route('/')
 @auth.route('/home')
@@ -65,8 +73,10 @@ def attempt():
                           hang=hang, win=win, cargo_bonus=cargo_bonus, hangar_bonus=hangar_bonus)
         db.session.add(new_scout)
         db.session.commit()
+
+        # all_teams = json.dumps(all_teams)
         
-    return render_template('scout.html')
+    return render_template('scout.html', all_teams=all_teams)
 
 # Delete
 @auth.route('/delete/<int:id>')

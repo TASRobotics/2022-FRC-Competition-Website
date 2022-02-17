@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form autocomplete="off" method="POST">
+<form autocomplete="OFF" method="POST">
     <br />
     <!--Essential information-->
     <div class="container justify-content-center text-center col-sm-12 col-md-4 col-lg-4 col-xl-4 mx-auto">
@@ -13,8 +13,13 @@
         
         <!--Team number-->
         <div class="form-group">
-            <label for="team">Team Number</label>
-            <input class="form-control text-center" type="team" id="team" name="team" placeholder="Eg. 4253">
+            <label for="tags">Team Number</label>
+            <!-- <inpurt class="form-control text-center" type="team" id="tags" name="team" placeholde="Eg. 4253"> -->
+            <select class="form-control text-center" type="team" id="team" name="team">
+                {% for team in all_teams %}
+                <option value="{{team}}">{{team}}</option>
+                {% endfor %}
+            </select>
         </div>
 
         <!--Alliance-->
