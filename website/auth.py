@@ -73,8 +73,6 @@ def attempt():
                           hang=hang, win=win, cargo_bonus=cargo_bonus, hangar_bonus=hangar_bonus)
         db.session.add(new_scout)
         db.session.commit()
-
-        # all_teams = json.dumps(all_teams)
         
     return render_template('scout.html', all_teams=all_teams)
 
