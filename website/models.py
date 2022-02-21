@@ -30,3 +30,7 @@ class Scout(db.Model, UserMixin):
     win = db.Column(db.String(20))
     cargo_bonus = db.Column(db.String(20))
     hangar_bonus = db.Column(db.String(20))
+
+    foul_freq = db.Column(db.String(20))
+    driver = db.Column(db.String(20))
+    notes = db.Column(db.String(200))

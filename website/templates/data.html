@@ -46,11 +46,17 @@
 
           			<th>&emsp;&emsp;</th>
 
-					<th >Results</th>
+					<th>Results</th>
 					<th class="border">C_Bonus</th>
 					<th class="border">H_Bonus</th>
-          			<th class="border">Delete</th>
 
+					<th>&emsp;&emsp;</th>
+
+					<th>Add. Notes</th>
+					<th class="border">Foul Freq</th>
+					<th class="border">Driver Skills</th>
+					<th class="border">Notes</th>
+					<th class="border">Delete</th>
 				</tr>
 
 				{% for datum in data %}
@@ -84,6 +90,12 @@
 					<td>{{ datum.win }}</td>
 					<td class="border">{{ datum.cargo_bonus }}</td>
 					<td class="border">{{ datum.hangar_bonus }}</td>
+
+					<td></td>
+					<td>--></td>
+					<td class="border">{{ datum.foul_freq }}</td>
+					<td class="border">{{ datum.driver }}</td>
+					<td class="border">{{ datum.notes }}</td>
 
          			<td>
 						<button type="delete" class="btn btn-light">
