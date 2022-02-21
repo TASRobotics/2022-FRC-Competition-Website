@@ -33,9 +33,26 @@
     </div>
     <br />
 
+
     <!--Autonomous-->
     <h1>Autonomous</h1>
     <div class="container-md">  
+        <!--Starting position-->
+        <div class="border col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto my-3">
+            <div class="big-word justify-content-center">
+                <div class="col text-center"><strong>Starting Position</strong></div>
+            </div>
+
+            <!--Options-->
+            <div class="col big-word col-xl-6 justify-content-center form-group mx-auto my-2">
+                <select class="form-control text-center" id="starting_pos" name="starting_pos">
+                    <option>Left</option>
+                    <option>Right</option>
+                    <option>Middle</option>
+                </select>
+            </div>
+        </div>        
+
         <!--Taxi-->
         <div class="border col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto my-3">
             <div class="big-word justify-content-center">
@@ -348,14 +365,35 @@
                 </div>
             </div>
         </div>
+        <br />
     </div>
+
+    <!--Additional Notes-->
+    <h1>Additional Notes</h1>
+    <div class="container-md">  
+        <!--Bot type-->
+        <div class="border col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto my-3">
+            <div class="big-word justify-content-center">
+                <div class="col text-center"><strong>Bot Type</strong></div>
+            </div>
+
+            <!--Options-->
+            <div class="col big-word col-xl-6 justify-content-center form-group mx-auto my-2">
+                <select class="form-control text-center" id="starting_pos" name="starting_pos">
+                    <option>Low Shooting Bot</option>
+                    <option>Tall Shooting Bot</option>
+                    <option>Defense Bot</option>
+                </select>
+            </div>
+        </div> 
+
     <div class="container">
         <div class="row">
           <div class="col text-center">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
+        <br />
     </div>
-    <br />
 </form>
 {% endblock %}
