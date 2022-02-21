@@ -1,20 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form autocomplete="off" method="POST">
+<form autocomplete="OFF" method="POST">
     <br />
     <!--Essential information-->
     <div class="container justify-content-center text-center col-sm-12 col-md-4 col-lg-4 col-xl-4 mx-auto">
-        <!--Team number-->
-        <div class="form-group">
-            <label for="team">Team Number</label>
-            <input class="form-control text-center" type="team" id="team" name="team" placeholder="Eg. 4253">
-        </div>
-
         <!--Round number-->
         <div class="form-group">
             <label for="round">Round Number</label>
-            <input class="form-control text-center" type="round" id="round" name="round" placeholder="Eg. 3">
+            <input class="form-control text-center" type="round" id="round" name="round" placeholder="Eg. 3" onkeypress="return isNumber(event)">
+        </div>
+        
+        <!--Team number-->
+        <div class="form-group">
+            <label for="tags">Team Number</label>
+            <select class="form-control text-center" type="team" id="team" name="team">
+                {% for team in all_teams %}
+                <option value="{{team}}">{{team}}</option>
+                {% endfor %}
+            </select>
         </div>
 
         <!--Alliance-->
@@ -28,9 +32,26 @@
     </div>
     <br />
 
+
     <!--Autonomous-->
     <h1>Autonomous</h1>
     <div class="container-md">  
+        <!--Starting position-->
+        <div class="border col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto my-3">
+            <div class="big-word justify-content-center">
+                <div class="col text-center"><strong>Starting Position</strong></div>
+            </div>
+
+            <!--Options-->
+            <div class="col big-word col-xl-6 justify-content-center form-group mx-auto my-2">
+                <select class="form-control text-center" id="starting_pos" name="starting_pos">
+                    <option>Left</option>
+                    <option>Right</option>
+                    <option>Middle</option>
+                </select>
+            </div>
+        </div>        
+
         <!--Taxi-->
         <div class="border col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto my-3">
             <div class="big-word justify-content-center">
@@ -343,14 +364,61 @@
                 </div>
             </div>
         </div>
+        <br />
     </div>
+
+    <!--Additional Notes-->
+    <h1>Additional Information</h1>
+    <div class="container-md">  
+        <!--Frequency of Fouls-->
+        <div class="border col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto my-3">
+            <div class="big-word justify-content-center">
+                <div class="col text-center"><strong>Foul Frequency</strong></div>
+            </div>
+            <!--Options-->
+            <div class="col big-word col-xl-6 justify-content-center form-group mx-auto my-2">
+                <select class="form-control text-center" id="foul_freq" name="foul_freq">
+                    <option>Rare</option>
+                    <option>Medium</option>
+                    <option>Frequent</option>
+                </select>
+            </div>
+        </div> 
+
+        <!--Driver Skills-->
+        <div class="border col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto my-3">
+            <div class="big-word justify-content-center">
+                <div class="col text-center"><strong>Driver Skills</strong></div>
+            </div>
+            <!--Options-->
+            <div class="col big-word col-xl-6 justify-content-center form-group mx-auto my-2">
+                <select class="form-control text-center" id="driver" name="driver">
+                    <option>Garbage</option>
+                    <option>OK</option>
+                    <option>Decent</option>
+                </select>
+            </div>
+        </div> 
+
+        <!--Mechanism-->
+        <div class="border col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto my-3">
+            <div class="big-word justify-content-center">
+                <div class="col text-center"><strong>Additional Notes</strong></div>
+            </div>
+            <div class="form-group">
+                <textarea class="text-center my-3 form-control" id="notes" name=notes rows="3" placeholder="Bot type + Special mechanisms"></textarea>
+            </div>
+        </div>
+
+
+    <!--Submit button-->
     <div class="container">
         <div class="row">
           <div class="col text-center">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
+        <br />
     </div>
-    <br />
 </form>
 {% endblock %}

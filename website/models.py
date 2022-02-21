@@ -8,6 +8,7 @@ class Scout(db.Model, UserMixin):
     round = db.Column(db.String(20))
     alliance = db.Column(db.String(20))
 
+    starting_pos = db.Column(db.String(20))
     taxi = db.Column(db.String(20))
     auton_upper_in = db.Column(db.String(20))
     auton_upper_missed = db.Column(db.String(20))
@@ -29,3 +30,7 @@ class Scout(db.Model, UserMixin):
     win = db.Column(db.String(20))
     cargo_bonus = db.Column(db.String(20))
     hangar_bonus = db.Column(db.String(20))
+
+    foul_freq = db.Column(db.String(20))
+    driver = db.Column(db.String(20))
+    notes = db.Column(db.String(200))

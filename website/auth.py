@@ -2,8 +2,16 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for,
 from .models import Scout
 from . import db
 import csv
+import tbapy
+import json
 
+tba = tbapy.TBA('h39XHSEqXkc59WvXY0lteYagmwOzWD0wmLV2CxZulOMcB89YIHFUIczJxvGTtM6X')
 auth = Blueprint('auth', __name__)
+
+all_teams_simple = tba.event_teams("2022tant", "simple")
+all_teams = []
+for i in range (len(all_teams_simple)):
+    all_teams.append(all_teams_simple[i]['team_number'])
 
 @auth.route('/')
 @auth.route('/home')
@@ -32,6 +40,7 @@ def attempt():
         alliance = request.form.get('alliance')
 
         # Auton
+        starting_pos = request.form.get('starting_pos')
         taxi = request.form.get('taxi')
 
         auton_upper_in = request.form.get('auton_upper_in')
@@ -56,17 +65,16 @@ def attempt():
         cargo_bonus = request.form.get('cargo_bonus')
         hangar_bonus = request.form.get('hangar_bonus')
 
-        new_scout = Scout(team=team, round=round, alliance=alliance, taxi=taxi, 
-                          auton_upper_in=auton_upper_in, auton_upper_missed=auton_upper_missed, 
-                          auton_upper_unreliable=auton_upper_unreliable, auton_lower_in=auton_lower_in,
-                          auton_lower_missed=auton_lower_missed, auton_lower_unreliable=auton_lower_unreliable, 
-                          tele_upper_in=tele_upper_in, tele_upper_missed=tele_upper_missed, tele_upper_unreliable=tele_upper_unreliable,
-                          tele_lower_in=tele_lower_in, tele_lower_missed=tele_lower_missed, tele_lower_unreliable=tele_lower_unreliable,
-                          hang=hang, win=win, cargo_bonus=cargo_bonus, hangar_bonus=hangar_bonus)
+        foul_freq = request.form.get('foul_freq')
+        driver = request.form.get('driver')
+        notes = request.form.get('notes')
+
+        new_scout = Scout(team=team, round=round, alliance=alliance,                        starting_pos=starting_pos, taxi=taxi, auton_upper_in=auton_upper_in, auton_upper_missed=auton_upper_missed, auton_upper_unreliable=auton_upper_unreliable, auton_lower_in=auton_lower_in, auton_lower_missed=auton_lower_missed, auton_lower_unreliable=auton_lower_unreliable, tele_upper_in=tele_upper_in, tele_upper_missed=tele_upper_missed, tele_upper_unreliable=tele_upper_unreliable,tele_lower_in=tele_lower_in, tele_lower_missed=tele_lower_missed, tele_lower_unreliable=tele_lower_unreliable, hang=hang, win=win, cargo_bonus=cargo_bonus, hangar_bonus=hangar_bonus, foul_freq=foul_freq, driver=driver, notes=notes)
+
         db.session.add(new_scout)
         db.session.commit()
         
-    return render_template('scout.html')
+    return render_template('scout.html', all_teams=all_teams)
 
 # Delete
 @auth.route('/delete/<int:id>')
@@ -88,14 +96,11 @@ def download():
         csv_out = csv.writer(s_key)
 
         # Horizontal labels
-        csv_out.writerow(["Team", "Round", "Alliance", "Taxi", "A_Upper_In", "A_Upper_Missed", "A_Upper_Unreliable", "A_Lower_In", "A_Lower_Missed", "A_Lower_Unreliable",
-                         "T_Upper_In", "T_Upper_Missed", "T_Upper_Unreliable", "T_Lower_In", "T_Lower_Missed", "T_Lower_Unreliable", "Hang", "Cargo", "Hangar"])
+        csv_out.writerow(["Team", "Round", "Alliance", "Starting_pos", "Taxi", "A_Upper_In", "A_Upper_Missed", "A_Upper_Unreliable", "A_Lower_In", "A_Lower_Missed", "A_Lower_Unreliable", "T_Upper_In", "T_Upper_Missed", "T_Upper_Unreliable", "T_Lower_In", "T_Lower_Missed", "T_Lower_Unreliable", "Hang", "Cargo", "Hangar", "Foul Freq", "Driver Skills", "Notes"])
         
         # Database data
-        data = db.session.query(Scout.team, Scout.round, Scout.alliance, Scout.taxi, Scout.auton_upper_in, Scout.auton_upper_missed, 
-                                Scout.auton_upper_unreliable, Scout.auton_lower_in, Scout.auton_lower_missed, Scout.auton_lower_unreliable, 
-                                Scout.tele_upper_in, Scout.tele_upper_missed, Scout.tele_upper_unreliable, Scout.tele_lower_in, 
-                                Scout.tele_lower_missed, Scout.tele_lower_unreliable, Scout.hang, Scout.cargo_bonus, Scout.hangar_bonus)
+        data = db.session.query(Scout.team, Scout.round, Scout.alliance, Scout.starting_pos, Scout.taxi, Scout.auton_upper_in, Scout.auton_upper_missed, Scout.auton_upper_unreliable, Scout.auton_lower_in, Scout.auton_lower_missed, Scout.auton_lower_unreliable, Scout.tele_upper_in, Scout.tele_upper_missed, Scout.tele_upper_unreliable, Scout.tele_lower_in, Scout.tele_lower_missed, Scout.tele_lower_unreliable, Scout.hang, Scout.cargo_bonus, Scout.hangar_bonus, Scout.foul_freq, Scout.driver, Scout.notes)
+        
         for i in data:
             csv_out.writerow(i)
         return render_template('download.html')
