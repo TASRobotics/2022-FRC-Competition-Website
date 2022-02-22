@@ -370,43 +370,15 @@
     <!--Additional Notes-->
     <h1>Additional Information</h1>
     <div class="container-md">  
-        <!--Frequency of Fouls-->
         <div class="border col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto my-3">
-            <div class="big-word justify-content-center">
-                <div class="col text-center"><strong>Foul Frequency</strong></div>
-            </div>
-            <!--Options-->
-            <div class="col big-word col-xl-6 justify-content-center form-group mx-auto my-2">
-                <select class="form-control text-center" id="foul_freq" name="foul_freq">
-                    <option>Rare</option>
-                    <option>Medium</option>
-                    <option>Frequent</option>
-                </select>
-            </div>
-        </div> 
-
-        <!--Driver Skills-->
-        <div class="border col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto my-3">
-            <div class="big-word justify-content-center">
-                <div class="col text-center"><strong>Driver Skills</strong></div>
-            </div>
-            <!--Options-->
-            <div class="col big-word col-xl-6 justify-content-center form-group mx-auto my-2">
-                <select class="form-control text-center" id="driver" name="driver">
-                    <option>Garbage</option>
-                    <option>OK</option>
-                    <option>Decent</option>
-                </select>
-            </div>
-        </div> 
-
-        <!--Mechanism-->
-        <div class="border col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto my-3">
-            <div class="big-word justify-content-center">
-                <div class="col text-center"><strong>Additional Notes</strong></div>
+            <div class="justify-content-center">
+                <div class="col text-center popup" onclick="myFunction()"><strong class="big-word">Additional Notes</strong>
+                    <span class="popuptext" id="myPopup">a. Bot type: Low/tall shooting bot /defense bot / climb bot <br /> b. If robot does not work <br /> c. Frequency of fouls <br /> d. Driver skills <br /> e. Any special mechanisms
+                    </span>
+                </div>
             </div>
             <div class="form-group">
-                <textarea class="text-center my-3 form-control" id="notes" name=notes rows="3" placeholder="Bot type + Special mechanisms"></textarea>
+                <textarea class="my-3 form-control" id="notes" name=notes rows="3"></textarea>
             </div>
         </div>
 
