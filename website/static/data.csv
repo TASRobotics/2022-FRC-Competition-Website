@@ -1,5 +1,6 @@
 Team,Round,Alliance,Starting_pos,Taxi,A_Upper_In,A_Upper_Missed,A_Upper_Unreliable,A_Lower_In,A_Lower_Missed,A_Lower_Unreliable,T_Upper_In,T_Upper_Missed,T_Upper_Unreliable,T_Lower_In,T_Lower_Missed,T_Lower_Unreliable,Hang,Cargo,Hangar,Notes
-4253,4344,Red,Left,Yes,0,0,,0,0,,0,0,,0,0,,Attempted,,,hello
 4253,333333,Red,Left,Yes,0,0,,0,0,,0,0,,0,0,,Attempted,,,hi
 4253,,Red,Left,Yes,0,0,,0,0,,0,0,,0,0,,Attempted,,,
 4253,88,Red,Left,Yes,0,0,,0,0,,0,0,,0,0,,Attempted,,,hhhhhhh
+4253,,Red,Left,Yes,6,0,,0,0,,0,0,,0,0,,Attempted,,,
+7632,123442,Red,Left,Yes,0,0,,0,0,,0,0,,0,0,,Attempted,,,1234213

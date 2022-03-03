@@ -1,12 +1,19 @@
+from email.mime import image
 from flask import Blueprint, render_template, request, flash, redirect, url_for, Response
 from .models import Scout
 from . import db
 import csv
 import tbapy
-import json
+import qrcode
+import qrcode.image.svg
 
 tba = tbapy.TBA('h39XHSEqXkc59WvXY0lteYagmwOzWD0wmLV2CxZulOMcB89YIHFUIczJxvGTtM6X')
 auth = Blueprint('auth', __name__)
+
+# QR Code
+img = qrcode.make('https://2022-FRC-Competition-Website.williamhou2.repl.co', image_factory=qrcode.image.svg.SvgImage)
+with open('website/static/qr.svg', 'wb') as qr:
+    img.save(qr)
 
 all_teams_simple = tba.event_teams("2022tant", "simple")
 all_teams = []
