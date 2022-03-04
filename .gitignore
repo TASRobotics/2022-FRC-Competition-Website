@@ -4,4 +4,4 @@ __pycache__
 poetry.lock
 pyproject.toml
 database.db
-/data.csv
+**/data.csv
