@@ -110,7 +110,7 @@ def delete(id):
     team_delete = Scout.query.get_or_404(id)
     db.session.delete(team_delete)
     db.session.commit()
-    data = Scout.query.all()
+    data = Scout.query.order_by(Scout.team).all()
     return render_template('data.html',data=data)
 
 # Download the database
