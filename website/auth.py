@@ -1,5 +1,5 @@
 from email.mime import image
-from flask import Blueprint, render_template, request, flash, redirect, url_for, Response
+from flask import Blueprint, render_template, request, flash, redirect, session, url_for, Response
 from .models import Scout
 from . import db
 import csv
@@ -30,7 +30,7 @@ def home():
 def data():    
     # Show all the scouting data
     data = Scout.query.order_by(Scout.team).all()
-
+        
     # Search teams
     if request.method == 'POST':
         searched_team = request.form.get('searched_team')
@@ -74,11 +74,33 @@ def attempt():
 
         notes = request.form.get('notes')
 
-        new_scout = Scout(team=team, round=round, alliance=alliance,                        starting_pos=starting_pos, taxi=taxi, auton_upper_in=auton_upper_in, auton_upper_missed=auton_upper_missed, auton_upper_unreliable=auton_upper_unreliable, auton_lower_in=auton_lower_in, auton_lower_missed=auton_lower_missed, auton_lower_unreliable=auton_lower_unreliable, tele_upper_in=tele_upper_in, tele_upper_missed=tele_upper_missed, tele_upper_unreliable=tele_upper_unreliable,tele_lower_in=tele_lower_in, tele_lower_missed=tele_lower_missed, tele_lower_unreliable=tele_lower_unreliable, hang=hang, win=win, cargo_bonus=cargo_bonus, hangar_bonus=hangar_bonus, notes=notes)
+        new_scout = Scout(team=team, round=round, alliance=alliance, starting_pos=starting_pos, taxi=taxi, auton_upper_in=auton_upper_in, auton_upper_missed=auton_upper_missed, auton_upper_unreliable=auton_upper_unreliable, auton_lower_in=auton_lower_in, auton_lower_missed=auton_lower_missed, auton_lower_unreliable=auton_lower_unreliable, tele_upper_in=tele_upper_in, tele_upper_missed=tele_upper_missed, tele_upper_unreliable=tele_upper_unreliable,tele_lower_in=tele_lower_in, tele_lower_missed=tele_lower_missed, tele_lower_unreliable=tele_lower_unreliable, hang=hang, win=win, cargo_bonus=cargo_bonus, hangar_bonus=hangar_bonus, notes=notes)
 
-        db.session.add(new_scout)
-        db.session.commit()
-        
+        try:
+            db.session.add(new_scout)
+            Scout.query.all()
+        except:
+            db.session.rollback()
+        else:
+            try:
+                db.session.commit()
+            except:
+                db.session.rollback()
+                db.session.commit()
+            
+        # Store it as csv 
+        with open(r'website/static/data.csv', 'w') as s_key:
+            csv_out = csv.writer(s_key)
+
+            # Horizontal labels
+            csv_out.writerow(["Team", "Round", "Alliance", "Starting_pos", "Taxi", "A_Upper_In", "A_Upper_Missed", "A_Upper_Unreliable", "A_Lower_In", "A_Lower_Missed", "A_Lower_Unreliable", "T_Upper_In", "T_Upper_Missed", "T_Upper_Unreliable", "T_Lower_In", "T_Lower_Missed", "T_Lower_Unreliable", "Hang", "Cargo", "Hangar","Notes"])
+            
+            # Database data
+            data = db.session.query(Scout.team, Scout.round, Scout.alliance, Scout.starting_pos, Scout.taxi, Scout.auton_upper_in, Scout.auton_upper_missed, Scout.auton_upper_unreliable, Scout.auton_lower_in, Scout.auton_lower_missed, Scout.auton_lower_unreliable, Scout.tele_upper_in, Scout.tele_upper_missed, Scout.tele_upper_unreliable, Scout.tele_lower_in, Scout.tele_lower_missed, Scout.tele_lower_unreliable, Scout.hang, Scout.cargo_bonus, Scout.hangar_bonus, Scout.notes)
+            
+            for i in data:
+                csv_out.writerow(i)
+    
     return render_template('scout.html', all_teams=all_teams)
 
 # Delete
@@ -94,18 +116,4 @@ def delete(id):
 # Download the database
 @auth.route('/download')
 def download():
-    data = Scout.query.all()
-
-    # Store it as csv 
-    with open(r'website/static/data.csv', 'w') as s_key:
-        csv_out = csv.writer(s_key)
-
-        # Horizontal labels
-        csv_out.writerow(["Team", "Round", "Alliance", "Starting_pos", "Taxi", "A_Upper_In", "A_Upper_Missed", "A_Upper_Unreliable", "A_Lower_In", "A_Lower_Missed", "A_Lower_Unreliable", "T_Upper_In", "T_Upper_Missed", "T_Upper_Unreliable", "T_Lower_In", "T_Lower_Missed", "T_Lower_Unreliable", "Hang", "Cargo", "Hangar","Notes"])
-        
-        # Database data
-        data = db.session.query(Scout.team, Scout.round, Scout.alliance, Scout.starting_pos, Scout.taxi, Scout.auton_upper_in, Scout.auton_upper_missed, Scout.auton_upper_unreliable, Scout.auton_lower_in, Scout.auton_lower_missed, Scout.auton_lower_unreliable, Scout.tele_upper_in, Scout.tele_upper_missed, Scout.tele_upper_unreliable, Scout.tele_lower_in, Scout.tele_lower_missed, Scout.tele_lower_unreliable, Scout.hang, Scout.cargo_bonus, Scout.hangar_bonus, Scout.notes)
-        
-        for i in data:
-            csv_out.writerow(i)
-        return render_template('download.html')
+    return render_template('download.html')

@@ -11,6 +11,7 @@ def create_app():
 
     # stores database in folder
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    
     db.init_app(app)
 
     from .auth import auth
